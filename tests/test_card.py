@@ -19,3 +19,32 @@ def test_add_product_to_cart(driver):
     )
 
     assert cart_badge.text == "1" #проверить, что количество товаров равно 1
+
+
+def test_remove_product_from_cart(driver):
+    login(driver)
+    driver.find_element(
+        By.ID,
+        "add-to-cart-sauce-labs-backpack"
+    ).click()
+    driver.find_element(
+        By.ID,
+        "remove-sauce-labs-backpack"
+    ).click()
+
+    remove_from_cart = driver.find_element(
+        By.ID,
+        "add-to-cart-sauce-labs-backpack"
+        )
+
+    assert remove_from_cart.text == "Add to cart"
+
+
+
+
+
+
+
+
+
+    id="remove-sauce-labs-backpack"

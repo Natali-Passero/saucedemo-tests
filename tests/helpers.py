@@ -5,7 +5,7 @@ from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 
 #авторизация - теперь это функция, которая принимает параметры барузер, юзернейм и пароль
-def login(driver, user_name, password):
+def login(driver, user_name = "standard_user", password = "secret_sauce"):
     driver.get("https://www.saucedemo.com/")
 
     driver.find_element(By.ID, "user-name").send_keys(user_name)

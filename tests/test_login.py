@@ -10,6 +10,7 @@ from helpers import login
 
 def test_successful_login(driver):
     login(driver, "standard_user", "secret_sauce")
+    
     assert "inventory" in driver.current_url
 
 
