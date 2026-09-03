@@ -3,9 +3,11 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
+from helpers import login
+
 
 def test_add_product_to_cart(driver):
-    login(driver, "standart_user", "secter_sauce")
+    login(driver, "standard_user", "secret_sauce")
     driver.find_element(
         By.ID,
         "add-to-cart-sauce-labs-backpack" #нажать кнопку добавления рюкзака в корзину

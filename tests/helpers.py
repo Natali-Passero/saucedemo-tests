@@ -11,5 +11,5 @@ def login(driver, user_name, password):
     driver.find_element(By.ID, "user-name").send_keys(user_name)
     driver.find_element(By.ID, "password").send_keys(password)
     driver.find_element(By.ID, "login-button").click()
-    
+
     return driver
