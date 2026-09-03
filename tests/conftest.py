@@ -15,6 +15,16 @@ def driver():
     browser.quit()
 
 
+#авторизация - теперь это функция, которая принимает параметры барузер, юзернейм и пароль
+def login(driver, user_name, password):
+    driver.get("https://www.saucedemo.com/")
+
+    driver.find_element(By.ID, "user-name").send_keys(user_name)
+    driver.find_element(By.ID, "password").send_keys(password)
+    driver.find_element(By.ID, "login-button").click()
+    
+    return driver
+
 # @pytest.fixture()
 # def good_login_user(driver):
 #     driver.get("https://www.saucedemo.com/")
