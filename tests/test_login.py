@@ -10,7 +10,7 @@ from helpers import login
 
 def test_successful_login(driver):
     login(driver, "standard_user", "secret_sauce")
-    
+
     assert "inventory" in driver.current_url
 
 
@@ -27,4 +27,23 @@ def test_login_with_wrong_password(driver):
     assert "Username and password do not match" in error_message.text
 
 
+def test_empty_login(driver):
+    login(driver, user_name="")
 
+    error_message = driver.find_element(
+        By.CSS_SELECTOR,
+        '[data-test="error"]'
+    )
+
+    assert "Epic sadface: Username is required" in error_message.text
+
+
+def test_empty_password(driver):
+    login(driver, password="")
+
+    error_message = driver.find_element(
+        By.CSS_SELECTOR,
+        '[data-test="error"]'
+    )
+
+    assert "Epic sadface: Password is required" in error_message.text

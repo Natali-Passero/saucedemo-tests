@@ -23,7 +23,7 @@
 
 0. Клонировать репозиторий:
 ```bash
-git clone https://github.com/ТВОЙ_USERNAME/saucedemo-tests.git
+git clone https://github.com/natali-passero/saucedemo-tests.git
 ```
 1. Перейти в папку проекта
 ```bash 
@@ -46,6 +46,6 @@ python -m pip install -r requirements.txt
 python -m pytest -v
 ```
 
-###Данные для успешной авторизации:
+### Данные для успешной авторизации:
 Username: standard_user
 Password: secret_sauce
