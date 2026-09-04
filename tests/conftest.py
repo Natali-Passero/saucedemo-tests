@@ -4,6 +4,8 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 
+URL_STAND = "https://www.saucedemo.com/"
+
 @pytest.fixture()
 def driver():
     service = Service(ChromeDriverManager().install())
@@ -13,7 +15,8 @@ def driver():
     yield browser
 
     browser.quit()
-    
+
+
 
 # @pytest.fixture()
 # def good_login_user(driver):
