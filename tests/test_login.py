@@ -47,3 +47,14 @@ def test_empty_password(driver):
     )
 
     assert "Epic sadface: Password is required" in error_message.text
+
+def test_close_error_button(driver):
+    login(driver, password="")
+
+    error_window = driver.find_element(
+        By.CSS_SELECTOR,
+        '.svg-inline--fa.fa-xmark'
+    ).click()
+
+    assert len(driver.find_elements(By.CSS_SELECTOR, ".svg-inline--fa.fa-xmark")) == 0
+
