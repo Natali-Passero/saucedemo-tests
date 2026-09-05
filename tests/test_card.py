@@ -3,11 +3,13 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 from helpers import login
 
 
 def test_add_product_to_cart(driver):
-    login(driver, "standard_user", "secret_sauce")
+    login(driver)
     driver.find_element(
         By.ID,
         "add-to-cart-sauce-labs-backpack" #нажать кнопку добавления рюкзака в корзину
@@ -40,13 +42,3 @@ def test_remove_product_from_cart(driver):
         )
 
     assert remove_from_cart.text == "Add to cart" #жду что вернется в исходное состояние
-
-
-
-
-
-
-
-
-
-    id="remove-sauce-labs-backpack"

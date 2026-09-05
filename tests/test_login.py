@@ -3,13 +3,15 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 from helpers import login
 
 
 #стандартного юзера и правильный пароль передаются в фаргументах функции login
 
 def test_successful_login(driver):
-    login(driver, "standard_user", "secret_sauce")
+    login(driver)
 
     assert "inventory" in driver.current_url
 
@@ -17,7 +19,7 @@ def test_successful_login(driver):
 #неправильный вароль передаю через тоже через аргументы функции login
 
 def test_login_with_wrong_password(driver):
-    login(driver, "secret_sauce", "wrong_password")
+    login(driver, password="wrong_password")
 
     error_message = driver.find_element(
         By.CSS_SELECTOR,
@@ -66,5 +68,13 @@ def test_close_error_button(driver):
 
     assert not error_window
 
-def test_show_password(driver):
-    login(driver, tap=False)
+def test_waiting_authorisation(driver):
+    login(driver, user_name="performance_glitch_user")
+
+    element = WebDriverWait(driver, 10).until(    #добавила ожидаение
+        EC.visibility_of_element_located(  #жду пока лого станицы каталога не отобразится
+            (By.CSS_SELECTOR, ".app_logo") #исли искать по классам в css селекторах - не завывать использовать вначале точку
+        )
+    )
+
+    assert element.text == "Swag Labs"
